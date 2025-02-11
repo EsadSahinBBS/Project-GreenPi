@@ -1,4 +1,4 @@
-# Project-Greenpi
+# Project-GreenPi
 Greenfoot games powered by Raspberry pi. 
 
 
@@ -239,3 +239,10 @@ except KeyboardInterrupt:
     ui.close()
 
 ```
+
+Nach dem Einfgen des codes, seichern mit Strg + X und anschließend die Anfrage auf Speichern mit Y (yes) und Enter beantworten. 
+Beim Ausführen des codes mit 
+```
+sudo python3 maini2c.py
+```
+sollten die einzelnen Analog-Sticks WASD und Pfeiltasten simulieren und den Zustand im Terminal anzeigen. 
