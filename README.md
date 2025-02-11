@@ -48,4 +48,5 @@ Arduino UNO ist ein passender Mikrocontroller aufgrund der I2C compatibilität, 
 https://www.arduino.cc/en/software
 
 Angekommen in der Software verbindet ihr euren Arduino mit einem USB Kabel mit dem Computer und wählt diesen aus. 
-Wir programmieren die Eingänge A1 - A4
+Wir programmieren den Arduino die Werte der Analog-Eingänge A1-A4 über I2C weiterzuhgeben:
+
