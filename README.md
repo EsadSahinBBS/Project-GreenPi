@@ -37,4 +37,15 @@ Anschließend muss das I2C-Protokoll der GPIO Pins aktiviert werden. Dazu verwen
 sudo raspi-config
 ```
 
-Und geht über "Interface Option" auf die I2C Option.
+Und geht über "Interface Options" auf die I2C Option.
+
+
+Das war's vorerst mit dem Pi. 
+
+#Arduino UNO
+Arduino UNO ist ein passender Mikrocontroller aufgrund der I2C compatibilität, welche direkte Kommunikation mit dem Pi ermöglicht, aber auch des simplicismus der Analog-Eingänge, als auch 5V und 3.3V unterstützung. In unserem Fall verwenden wir einen Arduino UNO R3. (jeder Arduino mit I2C und 4 Analog-Eingängen ist verwendbar mit ein paar Einstellungen in der Software). Um diesen zu Programmieren verwenden wir hierbei die Arduino IDE. Zum Download geht es hier:
+
+https://www.arduino.cc/en/software
+
+Angekommen in der Software verbindet ihr euren Arduino mit einem USB Kabel mit dem Computer und wählt diesen aus. 
+Wir programmieren die Eingänge A1 - A4
