@@ -24,7 +24,7 @@ Hier geht es zum Download:
 
 https://www.raspberrypi.com/software/
 
-Im Betriebssystem angekommen muss gegebenfalls Python und die benötigte Bibliothek installiert werden:
+Im Betriebssystem angekommen muss gegebenfalls Python und die benötigte Bibliothek installiert werden. Dazu öffnet ihr zunächst das Terminal. (Bei RetroPie alt + F4 beim Setup verwenden)
 
 ```
 sudo apt update
@@ -246,3 +246,92 @@ Beim Ausführen des codes mit
 sudo python3 maini2c.py
 ```
 sollten die einzelnen Analog-Sticks WASD und Pfeiltasten simulieren und den Zustand im Terminal anzeigen. 
+
+Da jetzt die Analog-Sticks convertiert werden, können wir uns auf die einzelnen Tasten fokussieren. Da die Tasten keinen Analog-Output wiedereben können wir diese direkt mit dem Raspberry Pi GPIO verbinden. Eine mögliche Überlegung wöre auch das I2C des Arduinos weiterhin zu verwenden, damit aber keine Signale durch Überlastung des I2C verloren gehen habe ich beschlossen den Arduino nicht zu verwenden.
+Hierfür erstellen wir im selben Ordner im Pi eine neue Python datei mit:
+```
+sudo nano mainbuttons.py
+```
+Hier fügen wir diesen Code ein:
+```
+import evdev
+import RPi.GPIO as GPIO
+import time
+
+# Code für den Raspberry Pi des GreenPi Projekts für die Tastensteuerung des Projekt GreenPi für den Infotag der Bertha-Benz-Schule-Sigmaringen
+# Geschrieben von Esad Sahin der Klasse EKIT 2025
+
+# Tastenbelegung: GPIO-Pin -> Zeichen
+KEY_MAPPING = {
+    17: evdev.ecodes.KEY_1,
+    18: evdev.ecodes.KEY_2,
+    27: evdev.ecodes.KEY_3,
+    22: evdev.ecodes.KEY_4,
+    23: evdev.ecodes.KEY_5,
+    24: evdev.ecodes.KEY_6,
+    25: evdev.ecodes.KEY_7,
+    5: evdev.ecodes.KEY_8,
+    6: evdev.ecodes.KEY_9,
+    12: evdev.ecodes.KEY_0,
+}
+
+# GPIO Setup
+GPIO.setmode(GPIO.BCM)
+for pin in KEY_MAPPING.keys():
+    GPIO.setup(pin, GPIO.IN, pull_up_down=GPIO.PUD_UP)
+
+# Virtuelles Eingabegerät erstellen
+device = evdev.UInput()
+
+def send_key(key_code):
+    device.write(evdev.ecodes.EV_KEY, key_code, 1)  # Taste gedrückt
+    device.write(evdev.ecodes.EV_KEY, key_code, 0)  # Taste losgelassen
+    device.syn()
+
+def main():
+    try:
+        while True:
+            for pin, key_code in KEY_MAPPING.items():
+                if GPIO.input(pin) == GPIO.LOW:
+                    send_key(key_code)
+                    time.sleep(0.2)  # Entprellung
+    except KeyboardInterrupt:
+        print("Beende Skript...")
+        GPIO.cleanup()
+        device.close()
+
+if __name__ == "__main__":
+    main()
+
+```
+
+Nach dem Speichern (Strg + X, Y, Enter) können wir die Tasten verbinden und Testen. Dafür verbinden wir einen Pin an eines der Angegebenen GPIO Pins und den anderen an einen GND (Man kann mehrere Pins and einen GND Input anstecken). Der Code ist in der Form begrenzt auf maximal 10 Tasten, welche die Zahlenreihe einer Tastatur emulieren (0-9). Hier ein Überblick an verwendbaren GPIO Pins:
+
+17, 18, 27, 22, 23, 24, 25, 5, 6, 12
+
+Einen Überblick zu den GPIO Pins habt ihr hier:
+![image](https://github.com/user-attachments/assets/d6b80798-7637-4e9d-8ea2-d6fa1a654c6a)
+
+So könnt ihr den Code testen:
+```
+sudo python3 mainbuttons.py
+```
+
+Wenn dies klappt seit ihr praktisch fertig.
+
+Wenn ihr RetroPie oder ähnliches verwenden solltet, könnt ihr folgendes machen um die Steuerung beim hochfahren starten könnt:
+
+```
+sudo nano /etc/rc.local
+```
+Fügt dann folgendes vor dem end hinzu:
+```
+cd /home/pi/controls &&
+sudo python3 maini2c.py
+sudo python3 mainbuttons.py
+```
+nach einem Speichern (Strg + X, Y, Enter) und einem Neustart mit 
+```
+sudo reboot now
+```
+sollte die Steuerung beim nächsten Start direkt funktionieren und der RetroPie Setup kann mit der Steuerung eingerichtet werden.
