@@ -53,6 +53,11 @@ Wir programmieren den Arduino die Werte der Analog-Eingänge A1-A4 über I2C wei
 ```
 #include <Wire.h>
 
+/*
+* Code für den Arduino des Project GreenPi für den Infotag der Bertha-Benz-Schule Sigmaringen
+* geschrieben von Esad Sahin der Klasse EKIT 2025
+*/
+
 void setup() {
   Wire.begin(0x08); // Arduino als I2C-Slave mit der Adresse 0x08 setzen
   Wire.onRequest(requestEvent); // Definiert was auf Datenanfrage passiert
