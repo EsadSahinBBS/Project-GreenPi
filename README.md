@@ -82,3 +82,30 @@ void requestEvent() {
 }
 
 ```
+
+Da wir den code haben können wir uns die Verbindungen der Geräte anschauen:
+
+Arduino UNO | Raspberry Pi
+3.3v |  3.3v
+Vin  |  5v
+GND  |  GND
+SDA  |  SDA (GPIO 2)
+SDC  |  SDC (GPIO 3)
+
+Die Analog-Sticks werden so Verbunden:
+
+Stick 1 (an Arduino):
+5v  |  5v
+GND |  GND
+VRX |  A0
+VRY |  A1
+
+Stick 2 (an Arduino):
+5v  |  5v
+GND |  GND
+VRX |  A2
+VRY |  A3
+
+Das finale Produkt sollte in etwa so aussehen:
+
+![image](https://github.com/user-attachments/assets/ee029c1c-9a85-4759-b842-12aa72158c4f)
