@@ -17,6 +17,11 @@ Für unsere Version haben wir folgende Bauteile verwendet (was zumindest die Tec
 - einen alten 17 Zoll 4:3 Monitor 
 - Holzgehäuse
 
+Eine technische Zeichnung für das Gehäuse ist hier abgebildet (ohne Tasteneinbohrungen):
+![image](https://github.com/user-attachments/assets/b028434d-3576-4bc9-a407-0e60ae619a37)
+
+
+
 Wir begannen indem wir das Panel des Monitors aus dem ursprünglichen Gehäuse mamen und in unser Holzgehäuse für den Bau einsetzten.
 Die Technick kam erst dannach. Für die Installation habe ich mich für den Raspberry Pi OS entschieden (Recalbox, Lakka oder RetroPie möglich). 
 Für die Folgende Betriebssysteminstallation kann man das Gewünschte Betriebssystem auf einer SD Karte für den Zugehörigen Pi installieren. 
