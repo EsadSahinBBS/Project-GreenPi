@@ -42,7 +42,8 @@ Und geht über "Interface Options" auf die I2C Option.
 
 Das war's vorerst mit dem Pi. 
 
-#Arduino UNO
+Arduino UNO
+
 Arduino UNO ist ein passender Mikrocontroller aufgrund der I2C compatibilität, welche direkte Kommunikation mit dem Pi ermöglicht, aber auch des simplicismus der Analog-Eingänge, als auch 5V und 3.3V unterstützung. In unserem Fall verwenden wir einen Arduino UNO R3. (jeder Arduino mit I2C und 4 Analog-Eingängen ist verwendbar mit ein paar Einstellungen in der Software). Um diesen zu Programmieren verwenden wir hierbei die Arduino IDE. Zum Download geht es hier:
 
 https://www.arduino.cc/en/software
@@ -109,3 +110,11 @@ VRY |  A3
 Das finale Produkt sollte in etwa so aussehen:
 
 ![image](https://github.com/user-attachments/assets/ee029c1c-9a85-4759-b842-12aa72158c4f)
+
+Zurück am Pi angekommen, erstellen wir jetzt den eigentlichen Code, welcher Tastatureingabe simuliert:
+
+```
+cd ~
+mkdir controls
+cd controls
+sudo nano 
