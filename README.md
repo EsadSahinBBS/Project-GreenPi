@@ -29,12 +29,13 @@ Hier geht es zum Download:
 
 https://www.raspberrypi.com/software/
 
-Im Betriebssystem angekommen muss gegebenfalls Python und die benötigte Bibliothek installiert werden. Dazu öffnet ihr zunächst das Terminal. (Bei RetroPie alt + F4 beim Setup verwenden)
+Im Betriebssystem angekommen muss gegebenfalls Python und die benötigte Bibliothek installiert werden. Dazu öffnet ihr zunächst das Terminal. (Bei RetroPie F4 beim Setup verwenden)
 
 ```
 sudo apt update
 sudo apt install python3
 sudo apt install python3-evdev
+sudo apt install python3-smbus
 ```
 
 Anschließend muss das I2C-Protokoll der GPIO Pins aktiviert werden. Dazu verwendet ihr:
@@ -76,11 +77,11 @@ void loop() {
 }
 
 void requestEvent() {
-  int val1 = analogRead(A1) / 4; // X-Achse des ersten Joysticks
-  int val2 = analogRead(A2) / 4; // Y-Achse des ersten Joysticks
+  int val1 = analogRead(A0) / 4; // X-Achse des ersten Joysticks
+  int val2 = analogRead(A1) / 4; // Y-Achse des ersten Joysticks
 
-  int val3 = analogRead(A3) / 4; // X-Achse des zweiten Joysticks
-  int val4 = analogRead(A4) / 4; // Y-Achse des zweiten Joysticks
+  int val3 = analogRead(A2) / 4; // X-Achse des zweiten Joysticks
+  int val4 = analogRead(A3) / 4; // Y-Achse des zweiten Joysticks
 
   // Die Werte weitergeben
   Wire.write(val1); 
@@ -105,14 +106,14 @@ Die Analog-Sticks werden so Verbunden:
 Stick 1 (an Arduino):
 5v  |  5v
 GND |  GND
-VRX |  A1
-VRY |  A2
+VRX |  A0
+VRY |  A1
 
 Stick 2 (an Arduino):
 5v  |  5v
 GND |  GND
-VRX |  A3
-VRY |  A4
+VRX |  A2
+VRY |  A3
 
 Das finale Produkt sollte in etwa so aussehen:
 
@@ -326,19 +327,6 @@ sudo python3 mainbuttons.py
 
 Wenn dies klappt seit ihr praktisch fertig.
 
-Wenn ihr RetroPie oder ähnliches verwenden solltet, könnt ihr folgendes machen um die Steuerung beim hochfahren starten könnt:
+Wenn ihr RetroPie oder ähnliches verwenden solltet, könnt müsst ihr die Codes über SSH starten.
 
-```
-sudo nano /etc/rc.local
-```
-Fügt dann folgendes vor dem end hinzu:
-```
-cd /home/pi/controls &&
-sudo python3 maini2c.py
-sudo python3 mainbuttons.py
-```
-nach einem Speichern (Strg + X, Y, Enter) und einem Neustart mit 
-```
-sudo reboot now
-```
-sollte die Steuerung beim nächsten Start direkt funktionieren und der RetroPie Setup kann mit der Steuerung eingerichtet werden.
+Da 
