@@ -24,7 +24,17 @@ Hier geht es zum Download:
 
 https://www.raspberrypi.com/software/
 
-https://assets.raspberrypi.com/static/4d26bd8bf3fa72e6c0c424f9aa7c32ea/dd4a0/imager.png
+Im Betriebssystem angekommen muss gegebenfalls Python und die benötigte Bibliothek installiert werden:
 
+```
+sudo apt update
+sudo apt install python3
+sudo apt install python3-evdev
+```
 
+Anschließend muss das I2C-Protokoll der GPIO Pins aktiviert werden. Dazu verwendet ihr:
+```
+sudo raspi-config
+```
 
+Und geht über "Interface Option" auf die I2C Option.
