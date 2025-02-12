@@ -1,11 +1,16 @@
 # Project-GreenPi
 Greenfoot games powered by Raspberry pi. 
 
+Mein persönliches Profil:
+https://github.com/PowerCmptr
+![image](https://github.com/user-attachments/assets/6551ec35-12ae-4d5c-941d-f07bd8f63e1a)
 
 
 
 Projekt für Infotag 2025 der Bertha-Benz TG/IT.
-Ein retro style Cabinet wird mithilfe von einem Raspberry Pi 4 aufgebaut und optimiert um Java spiele der Klasses zu spielen. 
+![Screenshot 2025-02-12 135205](https://github.com/user-attachments/assets/e1414e98-dd2f-449c-bb49-c36c5609ce9f)
+
+Ein retro style Arcade Automat wird mithilfe von einem Raspberry Pi 4 aufgebaut und optimiert um selbst gemachte Java-Spiele der Klasse zu spielen. 
 Natürlich ist das ganze nicht nur darauf beschränkt und könnte mit RetroPie combiniert werden also ist jeder Willkommen sich auf ein Peojekt zu wagen. 
 
 Für unsere Version haben wir folgende Bauteile verwendet (was zumindest die Technick angeht):
@@ -326,7 +331,8 @@ sudo python3 mainbuttons.py
 ```
 
 Wenn dies klappt seit ihr praktisch fertig.
+Nun könnt ihr einige Spiele eurer Wahl auf dem Raspberry Pi spielen und vielleicht euch auch selber an die Programmierung eines eigenen Spiels wagen?
+Falls etwas nicht geklappt haben sollte findet ihr zur hilfe hier ein vollständiges Verkabelungsschema zur Überprüfung der Verkabelung:
+![Verkabelungsschema](https://github.com/user-attachments/assets/d97e9c0a-3f7b-4087-890d-60419004377a)
 
-Wenn ihr RetroPie oder ähnliches verwenden solltet, könnt müsst ihr die Codes über SSH starten.
 
-Da 
