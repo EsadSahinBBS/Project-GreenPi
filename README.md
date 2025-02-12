@@ -3,11 +3,13 @@ Greenfoot games powered by Raspberry pi.
 
 Mein persönliches Profil:
 https://github.com/PowerCmptr
+
 ![image](https://github.com/user-attachments/assets/6551ec35-12ae-4d5c-941d-f07bd8f63e1a)
 
 
 
 Projekt für Infotag 2025 der Bertha-Benz TG/IT.
+
 ![Screenshot 2025-02-12 135205](https://github.com/user-attachments/assets/e1414e98-dd2f-449c-bb49-c36c5609ce9f)
 
 Ein retro style Arcade Automat wird mithilfe von einem Raspberry Pi 4 aufgebaut und optimiert um selbst gemachte Java-Spiele der Klasse zu spielen. 
