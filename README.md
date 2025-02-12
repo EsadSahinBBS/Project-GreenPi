@@ -1,5 +1,5 @@
 # Project-GreenPi
-Greenfoot games powered by Raspberry pi. 
+Greenfoot games powered by Raspberry Pi. 
 
 Mein persönliches Profil:
 https://github.com/PowerCmptr
