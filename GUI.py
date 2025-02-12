@@ -4,27 +4,22 @@ import tkinter as tk
 import threading
 import time
 
-# Define JAR games and their launch commands
+# Code für das GUI des Spiele-Selektors des Raspberry Pi, Teil des project GreenPi für den Infotag der Bertha-Benz-Schule Sigmaringen.
+# Geschrieben von Esad Sahin, Schüler der Klasse EKIT 2025
+
 GAMES = [
     ("Pong", "java --module-path /path/to/javafx-sdk-17/lib --add-modules javafx.controls,javafx.fxml -jar Pong.jar"),
-    ("Breakout", "java --module-path /path/to/javafx-sdk-17/lib --add-modules javafx.controls,javafx.fxml -jar Breakout.jar"),
-    ("Tetris", "java --module-path /path/to/javafx-sdk-17/lib --add-modules javafx.controls,javafx.fxml -jar Tetris.jar"),
-    ("Snake", "java --module-path /path/to/javafx-sdk-17/lib --add-modules javafx.controls,javafx.fxml -jar Snake.jar"),
-    ("Pacman", "java --module-path /path/to/javafx-sdk-17/lib --add-modules javafx.controls,javafx.fxml -jar Pacman.jar"),
-    ("Chess", "java --module-path /path/to/javafx-sdk-17/lib --add-modules javafx.controls,javafx.fxml -jar Chess.jar"),
-    ("Minesweeper", "java --module-path /path/to/javafx-sdk-17/lib --add-modules javafx.controls,javafx.fxml -jar Minesweeper.jar"),
-    ("Space Invaders", "java --module-path /path/to/javafx-sdk-17/lib --add-modules javafx.controls,javafx.fxml -jar SpaceInvaders.jar")
+    # Spiele hier rein
 ]
 
 processes = {}
 hold_keys = set()
 
-# Initialize Tkinter
+# Tkinter initialisieren
 root = tk.Tk()
 root.attributes("-fullscreen", True)
 root.configure(bg="black")
 
-# Track selected game
 selected_index = 0
 
 def update_menu():
@@ -36,7 +31,7 @@ def update_menu():
         else:
             menu_text.insert(tk.END, f"{game}\n")
 
-# Function to launch a selected game
+# Funktion zum Spielstart
 def launch_game(index):
     if 0 <= index < len(GAMES):
         command = GAMES[index][1]
@@ -80,24 +75,24 @@ def on_key_release(event):
     if event.keysym in hold_keys:
         hold_keys.remove(event.keysym)
 
-# Create a canvas for background
+# Hintergrundfläche erstellen
 canvas = tk.Canvas(root, bg="black")
 canvas.pack(expand=True, fill=tk.BOTH)
 
-# Add a title at the top
+# Titel erstellen
 title = tk.Label(canvas, text="PROJECT GREENPI", font=("Courier", 36), bg="black", fg="green")
 title.place(relx=0.5, rely=0.1, anchor=tk.CENTER)
 
-# Add a colorful frame around the menu
+# Farbigen Rand erstellen
 frame = tk.Frame(canvas, bg="blue", bd=10)
 frame.place(relx=0.5, rely=0.5, anchor=tk.CENTER, relwidth=0.8, relheight=0.6)
 
-# Create a text widget to display menu
+
 menu_text = tk.Text(frame, font=("Courier", 24), bg="black", fg="white", padx=20, pady=20)
 menu_text.tag_configure("selected", background="blue", foreground="white")
 menu_text.pack(expand=True, fill=tk.BOTH)
 
-# Bind keys
+# Tasten
 root.bind("<KeyPress>", on_key)
 root.bind("<KeyRelease>", on_key_release)
 update_menu()
