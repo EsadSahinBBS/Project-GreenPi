@@ -64,7 +64,7 @@ https://www.arduino.cc/en/software
 Angekommen in der Software verbindet ihr euren Arduino mit einem USB Kabel mit dem Computer und wählt diesen aus. 
 ![image](https://github.com/user-attachments/assets/58427fc6-75cd-478a-a5f3-e38e5c4c4339)
 
-Wir programmieren den Arduino die Werte der Analog-Eingänge A1-A4 über I2C weiterzuhgeben:
+Wir programmieren den Arduino die Werte der Analog-Eingänge A0-A3 über I2C weiterzuhgeben:
 
 ```
 #include <Wire.h>
