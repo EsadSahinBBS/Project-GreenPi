@@ -31,7 +31,7 @@ def on_key(event):
         selected_index = (selected_index - 1) % len(jar_files)
     elif event.keysym in ("Down", "s"):
         selected_index = (selected_index + 1) % len(jar_files)
-    elif event.keysym in ("Return", "space"):
+    elif event.keysym in ("1", "2", "3", "4", "5", "6", "7", "8", "9"):
         launch_jar()
     update_selection()
 
