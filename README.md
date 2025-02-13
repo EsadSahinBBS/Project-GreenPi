@@ -100,14 +100,14 @@ void requestEvent() {
 ```
 
 Da wir den code haben können wir uns die Verbindungen der Geräte anschauen:
-
+```
 Arduino UNO | Raspberry Pi
 3.3v |  3.3v
 Vin  |  5v
 GND  |  GND
 SDA  |  SDA (GPIO 2)
 SDC  |  SDC (GPIO 3)
-
+```
 Die Analog-Sticks werden so Verbunden:
 
 Stick 1 (an Arduino):
