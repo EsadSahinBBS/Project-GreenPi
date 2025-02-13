@@ -2,9 +2,8 @@ import smbus
 import time
 from evdev import UInput, ecodes as e
 
-# Code für den Raspberry Pi zum erhalten der I2C Werte des Arduinos für das GreenPi-Projekts für den Infotag der Bertha-Benz-Schule Sigmaringen
+# Code für den Raspberry Pi zum erhalten der I2C Werte des Arduinos für das GreenPi-Projekt
 # Code von Esad Sahin der Klasse EKIT 2025
-
 
 # I2C Protokoll initialisieren
 bus = smbus.SMBus(1)  
@@ -50,10 +49,22 @@ def release_key(key):
         pressed_keys.remove(key)
         print(f"[KEY RELEASE] {key}")  # Debug
 
+def read_i2c_with_timeout(addr, reg, length, timeout=1):
+    start_time = time.time()
+    while True:
+        try:
+            data = bus.read_i2c_block_data(addr, reg, length)
+            return data
+        except IOError:
+            if time.time() - start_time > timeout:
+                raise TimeoutError("I2C read operation timed out")
+            else:
+                continue
+
 try:
     while True:
         try:
-            data = bus.read_i2c_block_data(arduino_addr, 0, 4)  # Read 4 bytes (2 for each joystick)
+            data = read_i2c_with_timeout(arduino_addr, 0, 4)  # Read 4 bytes (2 for each joystick)
             x1, y1, x2, y2 = data[0], data[1], data[2], data[3]
 
             # Debug print rate limit
@@ -104,8 +115,9 @@ try:
                 release_key("UP")
                 release_key("DOWN")
 
-        except Exception as e:
-            print("[ERROR] I2C Read Failed:", e)
+        except (IOError, TimeoutError) as e:
+            print(f"[ERROR] I2C Read Failed: {e}")
+            time.sleep(1)  # Pause before retrying
 
         time.sleep(0.05)  # Verzögerung um pam zu vermeiden 
 
