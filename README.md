@@ -338,3 +338,4 @@ Falls etwas nicht geklappt haben sollte findet ihr zur hilfe hier ein vollständ
 ![Verkabelungsschema](https://github.com/user-attachments/assets/d97e9c0a-3f7b-4087-890d-60419004377a)
 
 
+![IMG_2521](https://github.com/user-attachments/assets/45cc826b-7146-423b-a45a-99d7b8684b65)
